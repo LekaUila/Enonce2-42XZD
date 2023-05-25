@@ -14,6 +14,7 @@
  * Domain Path:       /languages
  */
 
+ <?php
  $subscriptionKey = 'ENTER KEY HERE';
 
 $host = "https://api.bing.microsoft.com";
