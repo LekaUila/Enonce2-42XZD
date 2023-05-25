@@ -7,44 +7,98 @@
 
 <body>
 
+    <div id="global_div" style="margin: auto; text-align: center;">
+        <div id="msg_div" style="
+        margin: auto; width: 50%;
+        border: solid black; padding: 1%; text-align: left; scroll-behavior: auto;
+        overflow-y: scroll;
+        height: 250px;
+        ">
+    <!--###################################################################################-->
+    <!--###################################################################################-->
+    <!--###################################################################################-->
+    <!--                                      JAVASCRIPT                                   -->
+    <!--###################################################################################-->
+    <!--###################################################################################-->
+    <!--###################################################################################-->
+            <script>
 
-    <script>
+                function addElement (user, text, backgroundColor) {
+                    console.log('addElement launch');
+                // crée un nouvel élément div
+                var newDiv = document.createElement("div");
+                // et lui donne un peu de contenu
+                var newContent = document.createTextNode(user + " : " + text);
+                // ajoute le nœud texte au nouveau div créé
+                newDiv.appendChild(newContent);
 
-        function addElement (text) {
-        // crée un nouvel élément div
-        var newDiv = document.createElement("div");
-        // et lui donne un peu de contenu
-        var newContent = document.createTextNode("you : " + text);
-        // ajoute le nœud texte au nouveau div créé
-        newDiv.appendChild(newContent);
+                // ajoute le nouvel élément créé et son contenu dans le DOM
+                var currentDiv = document.getElementById('after_msg_div');
+                var currentDivcontainer = document.getElementById('msg_div');
+                currentDivcontainer.insertBefore(newDiv, currentDiv);
 
-        // ajoute le nouvel élément créé et son contenu dans le DOM
-        var currentDiv = document.getElementById('div1');
-        document.body.insertBefore(newDiv, currentDiv);
-        }
+                newDiv.style.border = 'black solid 1px';
+                newDiv.style.color = 'white';
+                newDiv.style.backgroundColor = backgroundColor;
+                newDiv.style.borderRadius = '30px';
+                newDiv.style.marginTop = '1%';
+                newDiv.style.marginBottom = '1%';
+                newDiv.style.padding = '1%';
+                }
 
-        function print_user_message() {
-            var text_input = document.getElementById('input_user');
-            var txt = text_input.value;
-            addElement(txt);
-        }
+                function print_user_message() {
+                    console.log('print_user_message launch');
+                    var text_input = document.getElementById('input_user');
+                    var txt = text_input.value;
+                    addElement("you", txt, "blue");
+                }
+                function print_ia_message() {
+                    console.log('print_ia_message launch');
+                    var txt = "This is the ai message.";
+                    addElement("AI", txt, "red");
+                }
+                function scroll_bottom(params) {
+                    console.log('scroll_bottom launch');
+                    element = document.getElementById('msg_div');
+                    element.scrollTop = element.scrollHeight;
+                }
 
-        function send_message() {
-            print_user_message();
-        }
+                function send_message() {
+                    console.log('send_message launch');
+                    print_user_message();
+                    print_ia_message();
+                    scroll_bottom();
+                }
 
 
-        window.addEventListener('load', function () {
-            
+                window.addEventListener('load', function () {
+                    
 
-          console.log('Cette fonction est exécutée une fois quand la page est chargée.');
-        });
-    </script>
-        
-    <div id="div1">
+                console.log('Cette fonction est exécutée une fois quand la page est chargée.');
+                });
+            </script>
+            <div id="after_msg_div"></div>
+        </div>
+    <!--###################################################################################-->
+    <!--###################################################################################-->
+    <!--###################################################################################-->
+    <!--                                      INTERFACE                                   -->
+    <!--###################################################################################-->
+    <!--###################################################################################-->
+    <!--###################################################################################-->
 
-        <input type="text" id="input_user"><button onclick="send_message()">>Send</button> 
 
+
+        <div id="input_div" style="margin: auto; text-align: center;">
+
+            <input type="text" id="input_user" style="display: inline-block;">
+            <button onclick="send_message()" style="display: inline-block;">
+                Send
+            </button> 
+    
+        </div>
     </div>
+
+
 
 </body>
