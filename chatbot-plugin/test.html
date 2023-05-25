@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<header>
+
+
+</header>
+
+<body>
+
+
+    <script>
+
+        function addElement (text) {
+        // crée un nouvel élément div
+        var newDiv = document.createElement("div");
+        // et lui donne un peu de contenu
+        var newContent = document.createTextNode("you : " + text);
+        // ajoute le nœud texte au nouveau div créé
+        newDiv.appendChild(newContent);
+
+        // ajoute le nouvel élément créé et son contenu dans le DOM
+        var currentDiv = document.getElementById('div1');
+        document.body.insertBefore(newDiv, currentDiv);
+        }
+
+        function print_user_message() {
+            var text_input = document.getElementById('input_user');
+            var txt = text_input.value;
+            addElement(txt);
+        }
+
+        function send_message() {
+            print_user_message();
+        }
+
+
+        window.addEventListener('load', function () {
+            
+
+          console.log('Cette fonction est exécutée une fois quand la page est chargée.');
+        });
+    </script>
+        
+    <div id="div1">
+
+        <input type="text" id="input_user"><button onclick="send_message()">>Send</button> 
+
+    </div>
+
+</body>
