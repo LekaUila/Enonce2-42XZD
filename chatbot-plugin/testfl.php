@@ -3,11 +3,10 @@ $prompt = "test";
 foreach ($_POST as $key => $value) {
     $prompt = $value;
 }
-echo "your prompt is \"" . $prompt . "\". You are rick rolled !";
 
 $ch = curl_init();
 
-$OPENAI_API_KEY = "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";
+$OPENAI_API_KEY = "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";
 
 //url
 curl_setopt($ch, CURLOPT_URL, "https://api.openai.com/v1/chat/completions");
@@ -28,7 +27,7 @@ curl_setopt($ch, CURLOPT_POST, true);
 */
 $datas = array( "model" => "gpt-3.5-turbo",
                 "messages"=> [array(  
-                                    "content" => "What day of the wek is it?",
+                                    "content" => $prompt,
                                     "role" => "user")]);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($datas));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -36,12 +35,9 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $response = curl_exec($ch);
 
-echo "<br>";
-echo $response;
-echo "<br>";
-
-$dico_rep = array($response);
+$dico_rep = json_decode($response, true);
 
 echo $dico_rep["choices"][0]["message"]["content"];
+
 
 ?>
