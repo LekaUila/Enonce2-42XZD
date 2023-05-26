@@ -50,7 +50,7 @@ function create_chat()
             var currentDivcontainer = document.getElementById("msg_div");
             currentDivcontainer.insertBefore(newDiv, currentDiv);
 
-            newDiv.innerHTML = "<div style=\"display: inline-block; background-color: " + backgroundColor +"; border: black solid 1px; border-radius:" + border_radius + "; padding-left: 2%; padding-right: 2%; padding-top: 1%; padding-bottom: 1%;\"><div style=\"display: inline; font-size: medium; font-weight: bold; font-style: italic;\">" + user + "</div><br>" + text + "</div>";
+            newDiv.innerHTML = "<div style=\"max-width: 300px; display: inline-block; background-color: " + backgroundColor +"; border: black solid 1px; border-radius:" + border_radius + "; padding-left: 2%; padding-right: 2%; padding-top: 1%; padding-bottom: 1%;\"><div style=\"display: inline; font-size: medium; font-weight: bold; font-style: italic;\">" + user + "</div><br>" + text + "</div>";
             if (left)
             {
                 newDiv.style.textAlign = "left";
@@ -98,6 +98,7 @@ function create_chat()
                 //La variable à passer est alors contenue dans l\'objet response et l\'attribut responseText.
                 var variableARecuperee = this.responseText;
                 addElement("AI", variableARecuperee, "#DF2935", true, "0px 30px 30px 0px");
+                scroll_bottom();
                 };
                 //requete.open(get, script.php, true); //True pour que l\'exécution du script continue pendant le chargement, false pour attendre.
                 //requete.send();
@@ -136,7 +137,7 @@ function create_chat()
                 console.log("send_message launch");
                 print_user_message();
                 print_ia_message();
-                send_rick_roll();
+                //send_rick_roll();
                 var text_input = document.getElementById("input_user");
                 text_input.value = "";
                 scroll_bottom();

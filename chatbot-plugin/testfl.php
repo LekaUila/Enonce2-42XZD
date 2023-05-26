@@ -6,7 +6,7 @@ foreach ($_POST as $key => $value) {
 
 $ch = curl_init();
 
-$OPENAI_API_KEY = "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";
+$OPENAI_API_KEY = "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";
 
 //url
 curl_setopt($ch, CURLOPT_URL, "https://api.openai.com/v1/chat/completions");
