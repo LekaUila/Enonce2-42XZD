@@ -1,7 +1,7 @@
 <div id="global_div" style="margin: auto; text-align: center;">
     <div id="msg_div" style="
     margin: auto; width: 80%;
-    border: solid #080708; padding: 1%; text-align: left; scroll-behavior: auto;
+    border: solid #080708; padding-top: 1%; padding-bottom: 1%; text-align: left; scroll-behavior: auto;
     overflow-y: scroll;
     height: 600px;
     ">
@@ -12,38 +12,54 @@
 <!--###################################################################################-->
 <!--###################################################################################-->
 <!--###################################################################################-->
+<div style="display: inline; font-size: medium; font-weight: bold; font-style: italic;"></div>
         <script>
 
-            function addElement (user, text, backgroundColor) {
+            function addElement (user, text, backgroundColor, left, border_radius) {
                 console.log("addElement launch");
             // crée un nouvel élément div
             var newDiv = document.createElement("div");
             // et lui donne un peu de contenu
+            /*
             var newContent = document.createTextNode(user + " : " + text);
             // ajoute le nœud texte au nouveau div créé
-            newDiv.appendChild(newContent);
+            newDiv.appendChild(newContent);*/
 
             // ajoute le nouvel élément créé et son contenu dans le DOM
             var currentDiv = document.getElementById("after_msg_div");
             var currentDivcontainer = document.getElementById("msg_div");
             currentDivcontainer.insertBefore(newDiv, currentDiv);
 
+            newDiv.innerHTML = "<div style=\"display: inline-block; background-color: " + backgroundColor +"; border: black solid 1px; border-radius:" + border_radius + "; padding-left: 2%; padding-right: 2%; padding-top: 1%; padding-bottom: 1%;\"><div style=\"display: inline; font-size: medium; font-weight: bold; font-style: italic;\">" + user + "</div><br>" + text + "</div>";
+            if (left)
+            {
+                newDiv.style.textAlign = "left";
+            }
+            else
+            {
+                newDiv.style.textAlign = "right";
+            };
+
+
+/*
+            newDiv.style.display = "inline-block";
             newDiv.style.border = "black solid 1px";
             newDiv.style.color = "white";
             newDiv.style.backgroundColor = backgroundColor;
+
             newDiv.style.borderRadius = "30px";
             newDiv.style.marginTop = "1%";
             newDiv.style.marginBottom = "1%";
             newDiv.style.padding = "1%";
             newDiv.style.paddingLeft = "2%";
-            newDiv.style.paddingRight = "2%";
+            newDiv.style.paddingRight = "2%";*/
             }
 
             function print_user_message() {
                 console.log("print_user_message launch");
                 var text_input = document.getElementById("input_user");
                 var txt = text_input.value;
-                addElement("you", txt, "#3772FF");
+                addElement("you", txt, "#3772FF", false, "30px 0px 0px 30px");
             }
             function print_ia_message() {
                 console.log("print_ia_message launch");
@@ -61,7 +77,7 @@
                 requete.onload = function() {
                 //La variable à passer est alors contenue dans l\'objet response et l\'attribut responseText.
                 var variableARecuperee = this.responseText;
-                addElement("AI", variableARecuperee, "#DF2935");
+                addElement("AI", variableARecuperee, "#DF2935", true, "0px 30px 30px 0px");
                 };
                 //requete.open(get, script.php, true); //True pour que l\'exécution du script continue pendant le chargement, false pour attendre.
                 //requete.send();
@@ -126,7 +142,7 @@
 
 
 
-    <div id="input_div" style="line-height: 0%; margin: auto; text-align: right; width: 82%; padding: 0%; border: solid #080708; background-color: #F1BF98;">
+    <div id="input_div" style="line-height: 0%; margin: auto; text-align: right; width: 80%; padding: 0%; border: solid #080708; background-color: #F1BF98;">
 
         <input type="text" placeholder="enter your question" id="input_user" style="border: none; background-color: #F1BF98; display: inline-block; width: 80%; margin: 0%; padding-top: 10px; padding-bottom: 10px;"><button onclick="send_message()" style="border: none; display: inline-block; width: 18%; margin: 0%; background-color: #DF2935; padding-top: 10px; padding-bottom: 10px;">Send</button> 
 
