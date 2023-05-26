@@ -150,7 +150,9 @@ function create_chat()
             console.log("Cette fonction est exécutée une fois quand la page est chargée.");
             });
         </script>
+        <img src="wp-content/plugins/help_button.png" onclick="send_rick_roll()" style="width: 30px; margin-left: 1%; margin-bottom: 1%;">
         <div id="after_msg_div"></div>
+
     </div>
 <!--###################################################################################-->
 <!--###################################################################################-->
