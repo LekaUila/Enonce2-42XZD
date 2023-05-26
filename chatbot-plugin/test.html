@@ -13,9 +13,10 @@
 <!--###################################################################################-->
 <!--###################################################################################-->
 <!--###################################################################################-->
-<div style="display: inline; font-size: medium; font-weight: bold; font-style: italic;"></div>
         <script>
 
+            var rgb_on = false;
+            
             function addElement (user, text, backgroundColor, left, border_radius) {
                 console.log("addElement launch");
             // crée un nouvel élément div
@@ -62,6 +63,37 @@
                 var txt = text_input.value;
                 addElement("you", txt, "#3772FF", false, "30px 0px 0px 30px");
             }
+
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+}
+
+            function rgb_lol () {
+                console.log("change lol launch");
+                var div_to_change = document.getElementById("msg_div");
+
+                if (rgb_on)
+                {
+                    div_to_change.style.backgroundColor = "rgb(" + getRandomInt(255) + ","+ getRandomInt(255) +","+getRandomInt(255)+")";
+                }
+                else
+                {
+                    div_to_change.style.backgroundColor = "white";
+                }
+            }
+            function change_rgb_mode () {
+
+                console.log("change rgb mode launch");
+                if (rgb_on)
+                {
+                    rgb_on = false;
+                }
+                else
+                {
+                    rgb_on = true;
+                }
+            }
+
             function print_ia_message() {
                 console.log("print_ia_message launch");
                 var text_input = document.getElementById("input_user");
@@ -96,7 +128,7 @@
 
             function send_rick_roll ()
             {
-                console.log("addElement launch");
+                console.log("rick roll launch launch");
             // crée un nouvel élément div
             var newDiv = document.createElement("div");
             // et lui donne un peu de contenu
@@ -127,10 +159,9 @@
             window.addEventListener("load", function () {
                 
 
-            console.log("Cette fonction est exécutée une fois quand la page est chargée.");
+                setInterval("rgb_lol()", 1);
             });
         </script>
-        <img src="help_button.png" onclick="send_rick_roll()" style="width: 30px; margin-left: 1%; margin-bottom: 1%;">
         <div id="after_msg_div", ></div>
     </div>
 <!--###################################################################################-->
@@ -147,6 +178,12 @@
 
         <input type="text" placeholder="enter your question" id="input_user" style="border: none; background-color: #F1BF98; display: inline-block; width: 80%; margin: 0%; padding-top: 10px; padding-bottom: 10px;"><button onclick="send_message()" style="border: none; display: inline-block; width: 18%; margin: 0%; background-color: #DF2935; padding-top: 10px; padding-bottom: 10px;">Send</button> 
 
+    </div>
+    <div id="lol_div" style="line-height: 0%; margin: auto; text-align: centre; height: 32px; width: 80%; padding: 0%; border: solid #080708; background-color: #F1BF98;">
+
+        <button onclick="change_rgb_mode()" style="width:  100%; border: none; display: inline;  background-color: #DF2935; padding-top: 10px; padding-bottom: 10px;">RGB</button>
+        <!--<img src="help_button.png" onclick="send_rick_roll()" style="width: 30px; margin: 1%;">-->
+ 
     </div>
 
 

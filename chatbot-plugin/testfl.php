@@ -8,7 +8,7 @@ $prompt = "Répond à cette question comme si tu était un neuroscientifique : "
 
 $ch = curl_init();
 
-$OPENAI_API_KEY = "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";
+$OPENAI_API_KEY = getenv("api_openai");
 
 //url
 curl_setopt($ch, CURLOPT_URL, "https://api.openai.com/v1/chat/completions");
