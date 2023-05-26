@@ -43,7 +43,6 @@
                 console.log("print_user_message launch");
                 var text_input = document.getElementById("input_user");
                 var txt = text_input.value;
-                text_input.value = "";
                 addElement("you", txt, "#3772FF");
             }
             function print_ia_message() {
@@ -57,6 +56,7 @@
                 //Code JavaScript
                 var requete = new XMLHttpRequest();
                 requete.open("POST", "wp-content/plugins/testfl.php");
+                requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 requete.send("prompt=" + txt);
                 requete.onload = function() {
                 //La variable à passer est alors contenue dans l\'objet response et l\'attribut responseText.
@@ -102,6 +102,8 @@
                 print_user_message();
                 print_ia_message();
                 send_rick_roll();
+                var text_input = document.getElementById("input_user");
+                text_input.value = "";
                 scroll_bottom();
             }
 
